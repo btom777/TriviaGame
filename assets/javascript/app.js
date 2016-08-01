@@ -16,24 +16,25 @@ function fsubmit() {
 	}
 
 	for (i = 0; i < all.length; i++) {
-		inputs = all[i].getAttribute("id");
-		if (inputs.checked) {
+		if (all[i].checked) {
 			inputs3 = all[i].getAttribute("value");
 			youranswers.push(inputs3);
 		}
 	}
 
-	if (checkAnswer.checked === true) {
-		correctAnswer++;
-		alert("Correct! Your score is " + correctAnswer + ".")
-	}
-	else {
-		wrongAnswer++;
-		if (wrongAnswer == 1) {
-			alert("Incorrect. You have guessed " + wrongAnswer + " wrong answer.")
+	for (i = 0; i < answers.length; i++) {
+		if (answers[i] == youranswers[i]) {
+			correctAnswer++;
+			alert("Correct! Your score is " + correctAnswer + ".")
 		}
 		else {
-			alert("Incorrect. You have guessed " + wrongAnswer + " wrong answers.")
+			wrongAnswer++;
+			if (wrongAnswer == 1) {
+				alert("Incorrect. You have guessed " + wrongAnswer + " wrong answer.")
+			}
+			else {
+				alert("Incorrect. You have guessed " + wrongAnswer + " wrong answers.")
+			}
 		}
 	}
 }
