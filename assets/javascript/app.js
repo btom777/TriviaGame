@@ -1,9 +1,15 @@
-var answers = [];
-var youranswers = [];
-var all = document.getElementsByTagName("input");
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, chD, correct =0;
 
-var correctAnswer = 0;
-var wrongAnswer = 0;
+var questions = [
+
+	["What sport does Roger Federer play?","Cricket","Basketball","Tennis","Soccer","C"],
+
+	["What sport does Kobe Bryant play?","Cricket","Basketball","Tennis","Soccer","B"],
+
+	["What sport does Lionel Messi play?","Cricket","Basketball","Tennis","Soccer","D"],
+
+
+];
 
 var number = 30;
 var counter;
@@ -36,43 +42,79 @@ function stop(){
 	clearInterval(counter);
 }
 
-run();
+function quiz(x){
 
-function fsubmit() {
+	return document.getElementById(x);
 
-	stop();
-	
-	for (i = 0; i < all.length; i++) {
-		inputs = all[i].getAttribute("id");
-		if (inputs.indexOf("true")==0) {
-			inputs2 = all[i].getAttribute("value");
-			answers.push(inputs2);
-		}
-	}
-
-	for (i = 0; i < all.length; i++) {
-		if (all[i].checked) {
-			inputs3 = all[i].getAttribute("value");
-			youranswers.push(inputs3);
-		}
-	}
-
-	if (answers.length == youranswers.length){
-
-		for (i = 0; i < answers.length; i++) {
-			if (answers[i] == youranswers[i]) {
-				correctAnswer++;
-			}
-			else {
-				wrongAnswer++;
-			}
-		}
-	}
-	else {
-		alert("You did not answer all the questions!");
-	}
-
-	var output = document.getElementById("game");	
-	var outputStr = "<h1>" + "Correct: " + correctAnswer + "</h1> " + "<h1>" + "Incorrect: " + wrongAnswer + "</h1>";
-	output.innerHTML = outputStr;
 }
+
+function renderQuestion() {
+
+	test = quiz("test");
+
+	if(pos >= questions.length){
+
+		$('#test').html("<h2>You got " + correct + " of " + questions.length + " questions correct.</h2>");
+
+		$("#test_status").html("Test Completed");
+
+		stop();
+
+		pos = 0;
+
+		correct = 0;
+
+		return false;
+
+	}
+
+	$('#test_status').html("Question " + (pos+1) + " of " + questions.length);
+
+	question = questions[pos][0];
+
+	chA = questions[pos][1];
+
+	chB = questions[pos][2];
+
+	chC = questions[pos][3];
+
+	chD = questions[pos][4];
+
+	$('#test').html("<h3>" + question + "</h3>");
+
+	$('#test').append("<input type= 'radio' name= 'choices' value= 'A'>" + chA + "<br>" + "<input type= 'radio' name= 'choices' value= 'B'>" + chB + "<br>" + "<input type= 'radio' name= 'choices' value= 'C'>" + chC + "<br>" + "<input type= 'radio' name= 'choices' value= 'D'>" + chD + "<br><br>");
+
+	$('#test').append("<button onclick=' checkAnswer()'>Submit</button>");
+
+}
+
+function checkAnswer(){
+
+	choices = document.getElementsByName("choices");
+
+	for (var i = 0; i < choices.length; i++) {
+
+		if (choices[i].checked) {
+
+			choice = choices[i].value;
+
+		}
+
+	}
+
+	if (choice == questions[pos][5]) {
+
+		correct++;
+
+	}
+
+	pos++;
+
+	renderQuestion();
+
+}
+
+$(document).ready(function() {
+	renderQuestion();
+	run();
+});

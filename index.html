@@ -1,46 +1,39 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+
 <html>
+
 <head>
-	<title>Trivia Game</title>
+
+	<meta charset="UTF-8">
+
+	<title>My Trivia Game</title>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
+
 </head>
+
 <body>
-	<header>
-		<h1>Trivia Game</h1>
-	</header>
+
+
+
+	<h1>Trivia Game</h1>
+
+		<h3>Let's see how well you know your athletes</h3>
 
 	<h2>Time Remaining:<span id="show-number"></span></h2>
 
-	<h3>1. What sport does Roger Federer play?</h3>
-	<ul>
-		<input type="radio" name="q1" id="false" value="Cricket"/>Cricket
-		<input type="radio" name="q1" id="false" value="Diving"/>Diving
-		<input type="radio" name="q1" id="true" value="Tennis"/>Tennis
-		<input type="radio" name="q1" id="false" value="Soccer"/>Soccer
-	</ul>
+	<h2 id="test_status"></h2>
 
-	<h3>2. What sport does Kobe Bryant play?</h3>
-	<ul>
-		<input type="radio" name="q2" id="false" value="Cricket"/>Cricket
-		<input type="radio" name="q2" id="true" value="Basketball"/>Basketall
-		<input type="radio" name="q2" id="false" value="Tennis"/>Tennis
-		<input type="radio" name="q2" id="false" value="Soccer"/>Soccer
-	</ul>
+	<div id="test"></div>
 
-	<h3>2. What sport does Lionel Messi play?</h3>
-	<ul>
-		<input type="radio" name="q3" id="false" value="Cricket"/>Cricket
-		<input type="radio" name="q3" id="false" value="Basketball"/>Basketall
-		<input type="radio" name="q3" id="false" value="Tennis"/>Tennis
-		<input type="radio" name="q3" id="true" value="Soccer"/>Soccer
-	</ul>
 
-	<p>
-		<input type="submit" name="btnSubmit" id="btnSubmit" value="submit" onclick="fsubmit()"/>
-	</p>
 
-	<div id="game"></div>
+
 
 </body>
+
 </html>
